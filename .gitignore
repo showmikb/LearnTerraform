@@ -3,3 +3,4 @@
 terraform.tfstate*
 .idea/
 .DS_Store
+xyz.file
