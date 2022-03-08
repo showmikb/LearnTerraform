@@ -1,0 +1,26 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.myec2 (expand)" [label = "aws_instance.myec2", shape = "box"]
+		"[root] data.aws_ami.ubuntu (expand)" [label = "data.aws_ami.ubuntu", shape = "box"]
+		"[root] output.instance_id" [label = "output.instance_id", shape = "note"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.environ" [label = "var.environ", shape = "note"]
+		"[root] var.flinstones_cidr" [label = "var.flinstones_cidr", shape = "note"]
+		"[root] var.ingress_ports" [label = "var.ingress_ports", shape = "note"]
+		"[root] var.it" [label = "var.it", shape = "note"]
+		"[root] aws_instance.myec2 (expand)" -> "[root] data.aws_ami.ubuntu (expand)"
+		"[root] aws_instance.myec2 (expand)" -> "[root] local.count_val (expand)"
+		"[root] aws_instance.myec2 (expand)" -> "[root] var.it"
+		"[root] data.aws_ami.ubuntu (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] local.count_val (expand)" -> "[root] var.environ"
+		"[root] output.instance_id" -> "[root] aws_instance.myec2 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.myec2 (expand)"
+		"[root] root" -> "[root] output.instance_id"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] var.flinstones_cidr"
+		"[root] root" -> "[root] var.ingress_ports"
+	}
+}
+
